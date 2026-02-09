@@ -1,8 +1,8 @@
 # Portfolio Part 1: Component Brainstorming
 
-- **Name**: <!-- TODO: fill with first and last name (e.g., Brutus Buckeye) then delete this comment -->
-- **Dot Number**: <!-- TODO: fill with OSU dot number (e.g., buckeye.17) then delete this comment -->
-- **Due Date**: <!-- TODO: fill with due date and time (e.g., 10/17 @ 3:10 PM EST) then delete this comment -->
+- **Name**: Wesley Lai<!-- TODO: fill with first and last name (e.g., Brutus Buckeye) then delete this comment -->
+- **Dot Number**: lai.751<!-- TODO: fill with OSU dot number (e.g., buckeye.17) then delete this comment -->
+- **Due Date**: 2/6/26 @ 4:10 PM<!-- TODO: fill with due date and time (e.g., 10/17 @ 3:10 PM EST) then delete this comment -->
 
 ## Assignment Overview
 
@@ -114,15 +114,11 @@ reason -->
 
 ## Assignment
 
-<!-- TODO: read the assignment section then delete this comment -->
-
 As previously stated, you are tasked with brainstorming 3 possible components.
 To aid you in this process, we have provided [some example components][example-components]
 that may help you in your brainstorming. All of these components were made at
 some point by one of your peers, so you should feel confident that you can
 accomplish any of them.
-
-<!-- TODO: browse the list of possible projects then delete this comment -->
 
 There is no requirement that you use any of the components listed above.
 If you want to model something else, go for it! Very common early object
@@ -142,8 +138,6 @@ list-like components that have different ways of manipulating the data. Think
 about different ways you might allow a client to manipulate your component.
 
 ### Example Component
-
-<!-- TODO: review this example component then delete this comment -->
 
 To help you brainstorm a few components, we've provided an example below of a
 component you already know well: NaturalNumber. We highly recommend that you
@@ -211,68 +205,99 @@ will likely refine your design to make your implementation easier to use.
 
 > Please use this section to share your designs.
 
-- Component Design #1: <!-- TODO: give component a name then delete this comment -->
+- Component Design #1: Video Game Library
   - **Description**:
-    - <!-- TODO: describe your component then delete this comment -->
+    - Model a possible games library that could be used to store games and organize them in various ways in accordance to the users wishes. Hopefully provide additional capabilities to see further into game system requirments and/or further information that'm important to know to the user.
   - **Kernel Methods**:
-    - <!-- TODO: list kernel methods then delete this comment -->
+    - void addGame(String title, String platform): adds a game with the given title and platform to the library
+    - Game removeGame(String title): remove and returns the game with the given title from the library
+    - boolean containsGame(string title): reports whether the library contains the game with the given title
+    - int size(): reports the number of games in the library
   - **Secondary Methods**:
-    - <!-- TODO: list secondary methods then delete this comment -->
+    - Set<Game> getGamesByPlatform(String platform): returns all games for a specific platform
+    - Set<Game> getGamesByGenre(String genre): returns all games from a specific genre
+    - void markAsComplete(String title): marks a game as complete
+    - Set<String> getAllPlatforms(): returns all platforms that have games in the library
+    - Map<String, Integer> getPlatformCounts(): returns a map of platform names to game counts
+    - void addGameWithDetail(String title, String platform, String genre, int year): adds a game with more metadata
   - **Additional Considerations** (*note*: "I don't know" is an acceptable
     answer for each of the following questions):
     - Would this component be mutable? Answer and explain:
-      - <!-- TODO: provide an argument then delete this comment -->
+      - Yes, the library will change as games are added or removed.
     - Would this component rely on any internal classes (e.g., `Map.Pair`)?
       Answer and explain:
-      - <!-- TODO: provide an argument then delete this comment -->
+      - Yes, it should need an internal Game class to store information about the game such as title, genre, platform, completion, etc.
     - Would this component need any enums or constants (e.g.,
       `Program.Instruction`)? Answer and explain:
-      - <!-- TODO: provide an argument then delete this comment -->
+      - Maybe, could possibly use enums for common names of platforms or genre, on the other hand it could just be a string constant
     - Can you implement your secondary methods using your kernel methods?
       Answer, explain, and give at least one example:
-      - <!-- TODO: provide an argument then delete this comment -->
+      - getGamesByPlatform(String platform) could be implemented by creating an empty Set<Game>, iterating through all games with size(), then for each game check if the platform matches, if it does add it to the result to be returned, then return it
 
-- Component Design #2: <!-- TODO: give component a name then delete this comment -->
+- Component Design #2: Music Playlist
   - **Description**:
-    - <!-- TODO: describe your component then delete this comment -->
+    - Stores songs including name, genre, length, and artist in different playlists. Also lets users manage their music playlists by creating, organizng, and manipulating playlists.
   - **Kernel Methods**:
-    - <!-- TODO: list kernel methods then delete this comment -->
+    - void addSong(String name, String artist, String genre, int length): adds a song to the end of the playlist
+    - Song removeSong(String name): removes and returns the song with the given name from the playlist
+    - boolean containsSong(String name): reports whether the playlist has the given name
+    - int size(): reports the number of songs in the playlist
   - **Secondary Methods**:
-    - <!-- TODO: list secondary methods then delete this comment -->
+    - int getTotalLength(): returns the total length of all songs in seconds
+    - Sequence<Song> getSongByGenre(String genre): returns all songs of a specific genre
+    - Sequence<Song> getSongByArtist(String artist): returns all songs of a specific artist
+    - void shuffle(): randomly reorders all songs in the playlist
+    - Song getNext(): removes and returns the first song in the playlist
+    - void sortByLength(): sorts all songs by length, shortest to longest
+    - void sortByName(): sorts all songs by alphabetic order of name
+    - Set<String> getAllGenres(): returns all unique genres in the playlist
+    - Set<String> getAllArtists(): returns all unique artists in the playlist
   - **Additional Considerations** (*note*: "I don't know" is an acceptable
     answer for each of the following questions):
     - Would this component be mutable? Answer and explain:
-      - <!-- TODO: provide an argument then delete this comment -->
+      - Yes, the playlist can be modified by adding and removing songs, shuffling, and sorting.
     - Would this component rely on any internal classes (e.g., `Map.Pair`)?
       Answer and explain:
-      - <!-- TODO: provide an argument then delete this comment -->
+      - Yes, it needs an inner Song class to store all the song information together.
     - Would this component need any enums or constants (e.g.,
       `Program.Instruction`)? Answer and explain:
-      - <!-- TODO: provide an argument then delete this comment -->
+      - Maybe, you could use them to define specific genres or time conversions, however could just use Strings to identify them
     - Can you implement your secondary methods using your kernel methods?
       Answer, explain, and give at least one example:
-      - <!-- TODO: provide an argument then delete this comment -->
+      - getTotalLength() could be implemented by initializing a counter variable totalSeconds to 0, a temp playlist could be created, and while the original playlist length > 0, remove songs from the playlist, add that songs length to total seconds, and add the removed song to the temp playlist, after all of that, transfer all the songs in the temp playlist to the original, then return the totalSeconds.
 
-- Component Design #3: <!-- TODO: give component a name then delete this comment -->
+- Component Design #3: Pantry List
   - **Description**:
-    - <!-- TODO: describe your component then delete this comment -->
+    - Stores objects/foodstuff in a pantry, tracking what's being stored, the quantity currently stored, remaining avalible space, how much space individual items take up. Could also include a shopping list to record items that need to be added to the pantry.
   - **Kernel Methods**:
-    - <!-- TODO: list kernel methods then delete this comment -->
+    - void addItems(String name, int quantity, double spacePerUnit): adds an item to the pantry with given quantity and space it occupies per unit
+    - PantryItem removeItem(String item, int amount): removes the specified amount of the item and returns the PantryItem, if amount  equals or exceeds the current quantity, remove the entire item from the pantry
+    - boolean containsItem(String name): reports whether the pantry contains the item with the given name
+    - int getQuantity(String name): returns the quantity of the item with the given name
+    - double getRemainingSpace(): reports how much space is left in the pantry
   - **Secondary Methods**:
-    - <!-- TODO: list secondary methods then delete this comment -->
+    - void updateQuantity(String name, int newQuantity): sets the quantity of an existing item to a new value
+    - void useItem(String item, int amount): removes a specified amount of an item of the given name
+    - PantryItem removeAllOfItem(String item): completely removes an item from the pantry regardless of quantity
+    - void addToShoppingList(String name, int neededQuantity): adds an item to the shopping list
+    - Map<String, Integer> getShoppingList(): returns the current shopping list
+    - void purchaseFromShoppingList(String name, int amount): adds an item from the shopping list to the pantry
+    - Set<PantryItem> getItemsByCategory(String category): returns all items in a category, such as "baked goods"
+    - double getTotalSpaceUsed(): reports the total space currently occupied by items in the pantry
+    - Map<String, Integer> getInventoryReport(): returns a map of all items and their quantities
   - **Additional Considerations** (*note*: "I don't know" is an acceptable
     answer for each of the following questions):
     - Would this component be mutable? Answer and explain:
-      - <!-- TODO: provide an argument then delete this comment -->
+      - Yes, the pantry changes constantly as items are added, removed, and their quantities are altered. After shopping and adding items, all of these change
     - Would this component rely on any internal classes (e.g., `Map.Pair`)?
       Answer and explain:
-      - <!-- TODO: provide an argument then delete this comment -->
+      - Yes, it would need PantryItem as an inner class to bundle all the information about each item.
     - Would this component need any enums or constants (e.g.,
       `Program.Instruction`)? Answer and explain:
-      - <!-- TODO: provide an argument then delete this comment -->
+      - Probably, i'll be simpler to have those constants with how they're less numerable and doesn't seem to forsake flexibility.
     - Can you implement your secondary methods using your kernel methods?
       Answer, explain, and give at least one example:
-      - <!-- TODO: provide an argument then delete this comment -->
+      - For removeAllItem(String name) I could use getQuantity(name) to find how many units exist, then call removeItem(name, quantity) to remove all of them, then return the resulting PantryItem
 
 ## Post-Assignment
 
@@ -280,8 +305,6 @@ The following sections detail everything that you should do once you've
 completed the assignment.
 
 ### Changelog
-
-<!-- TODO: create CHANGELOG then delete this comment -->
 
 At the end of every assignment, you should update the
 [CHANGELOG.md](../../CHANGELOG.md) file found in the root of the project folder.
@@ -319,8 +342,6 @@ designs, so we can gauge your progress. Please keep it updated at each stage
 of development.
 
 ### Submission
-
-<!-- TODO: read the submission instructions then delete this comment -->
 
 If you have completed the assignment using this template, we recommend that
 you convert it to a PDF before submission. If you're not sure how, check out
