@@ -13,3 +13,13 @@ the following form: YYYY.0M.0D.
 - Designed a Video Game Library component
 - Designed a Music Playlist component
 - Designed a Pantry List component
+
+## 2026.02.24
+
+## Added
+
+- Designed a proof of concept for the VideoGameLibrary component
+
+## Updated
+
+- Changed design to include developers instead of platform
